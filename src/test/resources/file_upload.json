@@ -1,0 +1,17 @@
+{
+  "INIT": {
+    "actions": [
+      "prepareFileAction"
+    ]
+  },
+  "PROCESS": {
+    "actions": [
+      "uploadFileAction"
+    ]
+  },
+  "FINISH": {
+    "actions": [
+      "finishUploadFileAction"
+    ]
+  }
+}
