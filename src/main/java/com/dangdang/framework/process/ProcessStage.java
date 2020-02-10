@@ -16,15 +16,15 @@ import java.util.List;
  * Created on 2/9/20 9:04 PM
  **/
 public class ProcessStage {
-    private List<BusinessAction> actions;
+    private List<String> actions;
 
     private String router = "defaultRouter";
 
-    public List<BusinessAction> getActions() {
+    public List<String> getActions() {
         return actions;
     }
 
-    public void setActions(List<BusinessAction> actions) {
+    public void setActions(List<String> actions) {
         this.actions = actions;
     }
 
