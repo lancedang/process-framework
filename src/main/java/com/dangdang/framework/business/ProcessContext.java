@@ -14,8 +14,9 @@ public class ProcessContext {
 
     //定义当前执行阶段
     private String currentStage = ProcessStageEnum.INIT.name();
-
     private ProcessConfig processConfig;
+    private String businessCode;
+    private String productCode;
 
 
     public String getCurrentStage() {
@@ -32,5 +33,21 @@ public class ProcessContext {
 
     public void setProcessConfig(ProcessConfig processConfig) {
         this.processConfig = processConfig;
+    }
+
+    public String getBusinessCode() {
+        return businessCode;
+    }
+
+    public void setBusinessCode(String businessCode) {
+        this.businessCode = businessCode;
+    }
+
+    public String getProductCode() {
+        return productCode;
+    }
+
+    public void setProductCode(String productCode) {
+        this.productCode = productCode;
     }
 }
