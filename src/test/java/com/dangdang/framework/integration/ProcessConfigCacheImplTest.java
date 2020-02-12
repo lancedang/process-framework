@@ -3,11 +3,14 @@
 package com.dangdang.framework.integration;
 
 import com.dangdang.framework.business.ProcessContext;
-import com.dangdang.framework.cache.ProcessConfigCache;
 import com.dangdang.framework.cache.ProcessConfigCacheImpl;
+import com.dangdang.framework.config.ProcessConfig;
 import org.junit.Test;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
+
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * @author qiankai07
@@ -20,17 +23,20 @@ public class ProcessConfigCacheImplTest {
     public void testGetProcessConfig() {
         ProcessConfigCacheImpl processConfigCache = new ProcessConfigCacheImpl();
 
-        Resource resource = new ClassPathResource("");
+        Resource resource = new ClassPathResource("file_upload.json");
 
-        //获取classpath下所有json文件
-        //processConfigCache.setResources();
+        processConfigCache.setResources((Resource[]) Arrays.asList(resource).toArray());
+        processConfigCache.setProcessConfigMap();
 
         ProcessContext processContext = new ProcessContext();
 
         processContext.setBusinessCode("file");
         processContext.setProductCode("upload");
 
-        processConfigCache.getProcessConfig(processContext);
+        ProcessConfig processConfig = processConfigCache.getProcessConfig(processContext);
+
+        List<String> init = processConfig.getActionsByStage("INIT");
+        System.out.println(init);
 
     }
 

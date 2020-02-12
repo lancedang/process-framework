@@ -20,7 +20,8 @@ import java.util.Map;
  * @version 1.0
  * Created on 2/10/20 7:21 PM
  **/
-@Component
+
+//@Component
 public class ProcessConfigCacheImpl implements ProcessConfigCache {
 
     //保存所有<json_file_name, ProcessConfig> 对应关系作为缓存
@@ -40,7 +41,8 @@ public class ProcessConfigCacheImpl implements ProcessConfigCache {
 
             ProcessConfig processConfig = JsonUtil.getTestObject(filename, ProcessConfigImpl.class);
 
-            processConfigMap.put(filename, processConfig);
+            String fileNamePre = filename.substring(0, filename.lastIndexOf(".json"));
+            processConfigMap.put(fileNamePre, processConfig);
         }
 
         this.processConfigMap = processConfigMap;
@@ -59,7 +61,7 @@ public class ProcessConfigCacheImpl implements ProcessConfigCache {
             String businessCode = processContext.getBusinessCode();
             String productCode = processContext.getProductCode();
 
-            String file = businessCode + "_" + productCode + ".json";
+            String file = businessCode + "_" + productCode;
 
             ProcessConfig processConfig = processConfigMap.get(file);
 
@@ -80,4 +82,5 @@ public class ProcessConfigCacheImpl implements ProcessConfigCache {
     public void setResources(Resource[] resources) {
         this.resources = resources;
     }
+
 }

@@ -5,11 +5,8 @@
        http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
 
-    <bean id="processExecutor" class="com.dangdang.framework.process.ProcessExecutorImpl"></bean>
+    <bean id="prepareFileAction" class="com.dangdang.framework.actions.PrepareFileAction"></bean>
+    <bean id="uploadFileAction" class="com.dangdang.framework.actions.UploadFileAction"></bean>
+    <bean id="finishUploadFileAction" class="com.dangdang.framework.actions.FinishUploadAction"></bean>
 
-    <bean id="defaultRouter" class="com.dangdang.framework.router.DefaultRouter"></bean>
-
-    <bean id="processConfigCache" class="com.dangdang.framework.cache.ProcessConfigCacheImpl">
-        <property name="resources" value="classpath:/*.json"/>
-    </bean>
 </beans>

@@ -1,17 +1,19 @@
 {
-  "INIT": {
-    "actions": [
-      "prepareFileAction"
-    ]
-  },
-  "PROCESS": {
-    "actions": [
-      "uploadFileAction"
-    ]
-  },
-  "FINISH": {
-    "actions": [
-      "finishUploadFileAction"
-    ]
+  "processStageMap": {
+    "INIT": {
+      "actions": [
+        "prepareFileAction"
+      ]
+    },
+    "PROCESS": {
+      "actions": [
+        "uploadFileAction"
+      ]
+    },
+    "FINISH": {
+      "actions": [
+        "finishUploadFileAction"
+      ]
+    }
   }
 }
