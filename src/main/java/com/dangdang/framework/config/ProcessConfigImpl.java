@@ -4,6 +4,7 @@ package com.dangdang.framework.config;
 
 import com.dangdang.framework.process.ProcessStage;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -22,7 +23,7 @@ public class ProcessConfigImpl implements ProcessConfig {
     public List<String> getActionsByStage(String stage) {
 
         ProcessStage processStage = processStageMap.get(stage);
-        List<String> actions = processStage.getActions();
+        List<String> actions = processStage == null? new ArrayList<String>(): processStage.getActions();
 
         return actions;
     }
@@ -30,7 +31,7 @@ public class ProcessConfigImpl implements ProcessConfig {
     public String getRouterByStage(String stage) {
 
         ProcessStage processStage = processStageMap.get(stage);
-        String router = processStage.getRouter();
+        String router = processStage == null? "defaultRouter" :processStage.getRouter();
 
         return router;
     }
