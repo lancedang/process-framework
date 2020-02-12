@@ -30,15 +30,16 @@ public class ProcessConfigCacheImplTest {
 
         ProcessContext processContext = new ProcessContext();
 
+        //设置business和product code
         processContext.setBusinessCode("file");
         processContext.setProductCode("upload");
 
+        //设置初始化数据
         ProcessConfig processConfig = processConfigCache.getProcessConfig(processContext);
 
         List<String> init = processConfig.getActionsByStage("INIT");
         System.out.println(init);
 
     }
-
 
 }

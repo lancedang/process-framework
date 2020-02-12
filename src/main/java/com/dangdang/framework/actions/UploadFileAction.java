@@ -4,6 +4,7 @@ package com.dangdang.framework.actions;
 
 import com.dangdang.framework.business.BusinessAction;
 import com.dangdang.framework.business.ProcessContext;
+import com.dangdang.framework.model.DataEntity;
 
 /**
  * @author qiankai07
@@ -13,7 +14,7 @@ import com.dangdang.framework.business.ProcessContext;
 public class UploadFileAction implements BusinessAction {
     @Override
     public void process(ProcessContext processContext) {
-        throw new RuntimeException("upload failure");
-        //System.out.println(this.getClass().getName());
+        //throw new RuntimeException("upload failure");
+        System.out.println(this.getClass().getName() + "---" + ((DataEntity)processContext.getDataObject()).getDataHouse().get("stage"));
     }
 }

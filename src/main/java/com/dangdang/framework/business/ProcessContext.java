@@ -18,6 +18,8 @@ public class ProcessContext {
     private String businessCode;
     private String productCode;
 
+    private Object dataObject;
+
 
     public String getCurrentStage() {
         return currentStage;
@@ -49,5 +51,13 @@ public class ProcessContext {
 
     public void setProductCode(String productCode) {
         this.productCode = productCode;
+    }
+
+    public Object getDataObject() {
+        return dataObject;
+    }
+
+    public void setDataObject(Object dataObject) {
+        this.dataObject = dataObject;
     }
 }
