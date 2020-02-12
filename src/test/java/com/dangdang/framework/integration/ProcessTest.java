@@ -20,6 +20,9 @@ import org.springframework.test.context.junit4.SpringRunner;
  * Created on 2/10/20 5:40 PM
  **/
 
+/**
+ * 测试类使用src.main.java下的SpringBoot环境
+ */
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = Main.class)
 public class ProcessTest {

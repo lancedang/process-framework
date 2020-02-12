@@ -7,6 +7,7 @@ public enum ProcessStageEnum {
     PRE_PROGRESS("处理前"),
     PROCESS("处理中"),
     POST_PROCESS("处理后"),
+    ERROR_PROCESS("异常处理"),
     FINISH("结束");
 
     ProcessStageEnum(String desc) {

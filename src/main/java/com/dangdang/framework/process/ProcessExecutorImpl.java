@@ -29,26 +29,33 @@ public class ProcessExecutorImpl implements ProcessExecutor {
     public void execute(ProcessContext processContext) {
 
         String currentStage = processContext.getCurrentStage();
+        ProcessConfig processConfig = processContext.getProcessConfig();
+        List<String> actions = processConfig.getActionsByStage(currentStage);
+
+        String routerName = processConfig.getRouterByStage(currentStage);
+        Router router = (Router) applicationContext.getBean(routerName);
 
         //FINISH阶段停止执行
         if(!"FINISH".equals(currentStage)) {
-                ProcessConfig processConfig = processContext.getProcessConfig();
 
-                List<String> actions = processConfig.getActionsByStage(currentStage);
-                String routerName = processConfig.getRouterByStage(currentStage);
-
+            try {
                 for (String action : actions) {
                     BusinessAction bean = (BusinessAction) applicationContext.getBean(action);
                     bean.process(processContext);
                 }
 
-                Router router = (Router) applicationContext.getBean(routerName);
-
                 //以DefaultRouter跳转到下一stage
                 router.route(processContext);
 
-                //相当于递归的方式继续执行
-                this.execute(processContext);
+            } catch (Exception e) {
+                router.routeError(processContext);
+                e.printStackTrace();
+            } finally {
+                System.out.println("-----------process 从" + currentStage + "转到" + processContext.getCurrentStage());
+            }
+
+            //相当于递归的方式继续执行
+            this.execute(processContext);
 
         }
 

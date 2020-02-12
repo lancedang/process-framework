@@ -10,7 +10,7 @@ import com.dangdang.framework.business.ProcessContext;
  * @version 1.0
  * Created on 2/11/20 3:59 PM
  **/
-public class FinishUploadAction implements BusinessAction {
+public class ErrorUploadAction implements BusinessAction {
     @Override
     public void process(ProcessContext processContext) {
         System.out.println(this.getClass().getName());

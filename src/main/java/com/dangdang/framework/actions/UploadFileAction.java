@@ -13,6 +13,7 @@ import com.dangdang.framework.business.ProcessContext;
 public class UploadFileAction implements BusinessAction {
     @Override
     public void process(ProcessContext processContext) {
-        System.out.println(this.getClass().getName());
+        throw new RuntimeException("upload failure");
+        //System.out.println(this.getClass().getName());
     }
 }

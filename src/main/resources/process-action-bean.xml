@@ -7,6 +7,6 @@
 
     <bean id="prepareFileAction" class="com.dangdang.framework.actions.PrepareFileAction"></bean>
     <bean id="uploadFileAction" class="com.dangdang.framework.actions.UploadFileAction"></bean>
-    <bean id="finishUploadFileAction" class="com.dangdang.framework.actions.FinishUploadAction"></bean>
+    <bean id="errorUploadAction" class="com.dangdang.framework.actions.ErrorUploadAction"></bean>
 
 </beans>

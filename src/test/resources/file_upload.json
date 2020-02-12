@@ -10,9 +10,9 @@
         "uploadFileAction"
       ]
     },
-    "FINISH": {
+    "ERROR_PROCESS": {
       "actions": [
-        "finishUploadFileAction"
+        "errorUploadAction"
       ]
     }
   }

@@ -23,8 +23,15 @@ public class DefaultRouter implements Router {
                 processContext.setCurrentStage(ProcessStageEnum.POST_PROCESS.name());
             } else if (ProcessStageEnum.POST_PROCESS.name().equals(currentStage)) {
                 processContext.setCurrentStage(ProcessStageEnum.FINISH.name());
+            } else {
+                processContext.setCurrentStage(ProcessStageEnum.FINISH.name());
             }
         }
+    }
+
+    @Override
+    public void routeError(ProcessContext processContext) {
+        processContext.setCurrentStage(ProcessStageEnum.ERROR_PROCESS.name());
     }
 
 }
