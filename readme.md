@@ -1,8 +1,11 @@
 # 项目说明
-> 本项目关于简单的自定义工作流实现一套简单矿机
+## 本项目关于简单的自定义工作流实现一套简单框架
+## 本项目使用在Spring环境中
 
 # 使用说明
-## 配置json文件
+## 引入项目jar包
+
+## resources目录配置json文件
 - 定义stage-action对应关系
 
 ## 自定义ProcessConfigCacheImpl
