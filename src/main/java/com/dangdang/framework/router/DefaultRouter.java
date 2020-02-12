@@ -14,14 +14,17 @@ import com.dangdang.framework.process.ProcessStage;
 public class DefaultRouter implements Router {
     public void route(ProcessContext processContext) {
         String currentStage = processContext.getCurrentStage();
-        if (ProcessStageEnum.INIT.name().equals(currentStage)) {
-            processContext.setCurrentStage(ProcessStageEnum.PROCESS.name());
-        } else if (ProcessStageEnum.PRE_PROGRESS.name().equals(currentStage)) {
-            processContext.setCurrentStage(ProcessStageEnum.PROCESS.name());
-        } else if (ProcessStageEnum.PROCESS.name().equals(currentStage)) {
-            processContext.setCurrentStage(ProcessStageEnum.POST_PROCESS.name());
-        } else if (ProcessStageEnum.POST_PROCESS.name().equals(currentStage)) {
-            processContext.setCurrentStage(ProcessStageEnum.FINISH.name());
+        if (!"FINISH".equals(currentStage)) {
+            if (ProcessStageEnum.INIT.name().equals(currentStage)) {
+                processContext.setCurrentStage(ProcessStageEnum.PROCESS.name());
+            } else if (ProcessStageEnum.PRE_PROGRESS.name().equals(currentStage)) {
+                processContext.setCurrentStage(ProcessStageEnum.PROCESS.name());
+            } else if (ProcessStageEnum.PROCESS.name().equals(currentStage)) {
+                processContext.setCurrentStage(ProcessStageEnum.POST_PROCESS.name());
+            } else if (ProcessStageEnum.POST_PROCESS.name().equals(currentStage)) {
+                processContext.setCurrentStage(ProcessStageEnum.FINISH.name());
+            }
         }
     }
+
 }

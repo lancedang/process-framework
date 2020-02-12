@@ -6,8 +6,10 @@ import com.dangdang.framework.business.BusinessAction;
 import com.dangdang.framework.business.ProcessContext;
 import com.dangdang.framework.config.ProcessConfig;
 import com.dangdang.framework.router.Router;
+import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
+import org.springframework.util.StringUtils;
 
 import java.util.List;
 
@@ -27,20 +29,28 @@ public class ProcessExecutorImpl implements ProcessExecutor {
     public void execute(ProcessContext processContext) {
 
         String currentStage = processContext.getCurrentStage();
-        ProcessConfig processConfig = processContext.getProcessConfig();
 
-        List<String> actions = processConfig.getActionsByStage(currentStage);
-        String routerName = processConfig.getRouterByStage(currentStage);
+        //FINISH阶段停止执行
+        if(!"FINISH".equals(currentStage)) {
+                ProcessConfig processConfig = processContext.getProcessConfig();
 
-        for (String action : actions) {
-            BusinessAction bean = (BusinessAction) applicationContext.getBean(action);
-            bean.process(processContext);
+                List<String> actions = processConfig.getActionsByStage(currentStage);
+                String routerName = processConfig.getRouterByStage(currentStage);
+
+                for (String action : actions) {
+                    BusinessAction bean = (BusinessAction) applicationContext.getBean(action);
+                    bean.process(processContext);
+                }
+
+                Router router = (Router) applicationContext.getBean(routerName);
+
+                //以DefaultRouter跳转到下一stage
+                router.route(processContext);
+
+                //相当于递归的方式继续执行
+                this.execute(processContext);
+
         }
-
-        Router router = (Router) applicationContext.getBean(routerName);
-        router.route(processContext);
-
-        this.execute(processContext);
 
     }
 
