@@ -7,7 +7,8 @@ import com.dangdang.framework.constant.ProcessStageEnum;
 import com.dangdang.framework.process.ProcessStage;
 
 /**
- * @author qiankai07
+ * @author qiankai07 定义所有action所属阶段的执行顺序
+ * 2个层级：若干个阶段，每个阶段若干个action, 定义当前阶段之后，下层执行哪个阶段，进而确定下层action执行哪个阶段
  * @version 1.0
  * Created on 2/9/20 8:22 PM
  **/
